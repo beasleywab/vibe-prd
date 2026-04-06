@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Coding PRD — MYP Design G10</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Space Mono',monospace;color:#111;background:#f5f4f0;min-height:100vh}
+#prd{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.eyebrow{font-family:'Press Start 2P',monospace;font-size:9px;color:#FFD600;letter-spacing:2px;margin-bottom:10px;font-weight:700}
+.doc-title{font-family:'Press Start 2P',monospace;font-size:22px;line-height:1.6;border-left:6px solid #00C2C7;padding-left:16px;margin-bottom:6px;font-weight:700;color:#111}
+.doc-sub{font-size:12px;color:#666;padding-left:22px;margin-bottom:6px}
+.class-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+.meta-box{background:#fff;border:1.5px solid #ddd;padding:12px 14px}
+.meta-label{font-family:'Press Start 2P',monospace;font-size:7px;color:#00C2C7;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px;font-weight:700}
+.meta-input{width:100%;background:transparent;border:none;border-bottom:1px dashed #bbb;color:#111;font-family:'Space Mono',monospace;font-size:12px;padding:3px 0;outline:none}
+.meta-input::placeholder{color:#bbb}
+.sec{margin-bottom:26px}
+.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sec-num{font-family:'Press Start 2P',monospace;font-size:13px;padding:7px 11px;flex-shrink:0;line-height:1;font-weight:700}
+.n-pink{background:#FF2D78;color:#fff}
+.n-teal{background:#00C2C7;color:#000}
+.n-yellow{background:#FFD600;color:#000}
+.sec-ttl{font-family:'Press Start 2P',monospace;font-size:13px;text-transform:uppercase;letter-spacing:1px;line-height:1.4;font-weight:700;color:#111}
+.sec-desc{font-size:13px;color:#555;margin-bottom:10px;line-height:1.7}
+.tbox{background:#fff;border:1.5px solid #ddd;padding:12px 14px}
+.tbox textarea{width:100%;background:transparent;border:none;color:#111;font-family:'Space Mono',monospace;font-size:12px;line-height:1.7;resize:none;outline:none;display:block}
+.tbox textarea::placeholder{color:#bbb;font-size:11px}
+.hint{font-size:11px;color:#bbb;font-style:italic;margin-top:6px;text-align:right}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.pixel-div{height:3px;background:repeating-linear-gradient(90deg,#FF2D78 0,#FF2D78 6px,transparent 6px,transparent 10px);margin:24px 0;opacity:.4}
+.journey-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.success-prompts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.prompt-card{background:#fff;border:1.5px solid #ddd;padding:14px}
+.prompt-q{font-family:'Press Start 2P',monospace;font-size:8px;color:#00C2C7;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:10px;line-height:1.8;font-weight:700}
+.prompt-card textarea{width:100%;background:transparent;border:none;border-bottom:1px dashed #bbb;color:#111;font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;resize:none;outline:none;display:block;padding-bottom:4px}
+.prompt-card textarea::placeholder{color:#bbb;font-size:11px}
+.check-item{display:flex;align-items:flex-start;gap:9px;background:#fff;border:1.5px solid #ddd;padding:9px 12px;cursor:pointer;transition:border-color .12s;margin-bottom:6px}
+.check-item:hover{border-color:#00C2C7}
+.check-item.done{border-color:#00C2C7;background:#edfcfc}
+.chk-box{width:14px;height:14px;border:2px solid #ccc;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.check-item.done .chk-box{background:#00C2C7;border-color:#00C2C7}
+.chk-mark{display:none;color:#000;font-size:9px;font-weight:700}
+.check-item.done .chk-mark{display:block}
+.chk-lbl{font-size:12px;flex:1;line-height:1.4;color:#111}
+.check-item.done .chk-lbl{text-decoration:line-through;color:#888}
+.pri-badge{font-family:'Press Start 2P',monospace;font-size:6px;padding:3px 7px;flex-shrink:0;margin-left:auto;align-self:center;font-weight:700}
+.del-btn{background:none;border:none;cursor:pointer;color:#ccc;padding:0 3px;font-size:13px;flex-shrink:0;line-height:1;align-self:center}
+.del-btn:hover{color:#FF2D78}
+.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.filter-lbl{font-family:'Press Start 2P',monospace;font-size:7px;color:#aaa;font-weight:700}
+.pill{font-family:'Press Start 2P',monospace;font-size:7px;padding:5px 10px;cursor:pointer;border:2px solid;background:transparent;transition:all .12s;line-height:1;font-weight:700}
+.pill-p{border-color:#FF2D78;color:#FF2D78}
+.pill-y{border-color:#FFD600;color:#b8990a}
+.pill-g{border-color:#ccc;color:#888}
+.pill-p.act{background:#FF2D78;color:#fff}
+.pill-y.act{background:#FFD600;color:#000}
+.pill-g.act{background:#ccc;color:#333}
+.feat-add-area{background:#fff;border:1.5px solid #ddd;padding:14px;margin-bottom:8px}
+.feat-input-row{display:flex;gap:0;margin-bottom:12px}
+.feat-input-row input{font-family:'Space Mono',monospace;font-size:12px;padding:9px 12px;border:1.5px solid #ddd;background:#f9f9f9;color:#111;outline:none;flex:1;min-width:0}
+.feat-input-row input::placeholder{font-size:11px;color:#bbb}
+.pri-picker{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.pri-opt{font-family:'Press Start 2P',monospace;font-size:8px;padding:10px 16px;cursor:pointer;border:2.5px solid;background:transparent;transition:all .12s;line-height:1;user-select:none;opacity:.4;font-weight:700}
+.pri-opt[data-p="must"]{border-color:#FF2D78;color:#FF2D78}
+.pri-opt[data-p="should"]{border-color:#FFD600;color:#b8990a}
+.pri-opt[data-p="wont"]{border-color:#888;color:#888}
+.pri-opt.unlocked{opacity:1}
+.pri-opt[data-p="must"].active{background:#FF2D78;color:#fff;opacity:1}
+.pri-opt[data-p="should"].active{background:#FFD600;color:#000;opacity:1}
+.pri-opt[data-p="wont"].active{background:#888;color:#fff;opacity:1}
+.add-feat-btn{font-family:'Press Start 2P',monospace;font-size:7px;padding:10px 16px;cursor:pointer;border:1.5px solid #ddd;background:transparent;color:#aaa;transition:all .12s;line-height:1;white-space:nowrap;opacity:.4;pointer-events:none;font-weight:700}
+.add-feat-btn.ready{opacity:1;pointer-events:auto;border-color:#00C2C7;color:#009fa4}
+.add-feat-btn.ready:hover{background:#00C2C7;color:#000}
+.step-label{font-family:'Press Start 2P',monospace;font-size:7px;color:#aaa;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:10px;font-weight:700}
+.prog-wrap{background:#e0e0e0;height:6px;margin-top:12px;overflow:hidden}
+.prog-fill{height:100%;background:#FF2D78;transition:width .3s ease}
+.prog-lbl{font-family:'Press Start 2P',monospace;font-size:7px;color:#aaa;margin-top:5px;display:flex;justify-content:space-between;font-weight:700}
+.btn{font-family:'Press Start 2P',monospace;font-size:7px;padding:8px 13px;cursor:pointer;border:1.5px solid;background:transparent;display:inline-flex;align-items:center;gap:6px;line-height:1;transition:all .12s;font-weight:700}
+.btn-p{border-color:#FF2D78;color:#FF2D78}
+.btn-p:hover{background:#FF2D78;color:#fff}
+.btn-t{border-color:#00C2C7;color:#009fa4}
+.btn-t:hover{background:#00C2C7;color:#000}
+.print-banner{background:#FF2D78;padding:16px 20px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.print-banner p{font-family:'Press Start 2P',monospace;font-size:8px;color:#fff;line-height:1.6;font-weight:700}
+.print-banner span{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.75);display:block;margin-top:5px}
+.btn-print{font-family:'Press Start 2P',monospace;font-size:8px;padding:10px 18px;cursor:pointer;border:2px solid #fff;background:transparent;color:#fff;display:inline-flex;align-items:center;gap:7px;line-height:1;transition:all .12s;white-space:nowrap;flex-shrink:0;font-weight:700}
+.btn-print:hover{background:#fff;color:#FF2D78}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;padding-top:18px;border-top:1.5px solid #ddd;margin-top:28px}
+#toast{background:#111;color:#FFD600;font-family:'Press Start 2P',monospace;font-size:8px;padding:10px 18px;border:2px solid #FFD600;margin:16px 0 0;display:none;text-align:center;font-weight:700}
+#toast.show{display:block}
+#print-doc{display:none}
+
+@media print {
+  body{background:#fff}
+  #prd{display:none!important}
+  #print-doc{
+    display:block!important;
+    font-family:'Space Mono',monospace;
+    color:#111;
+    background:#fff;
+    font-size:12px;
+    max-width:100%;
+    padding:0;
+  }
+  #print-doc .p-header{background:#FF2D78;color:#fff;padding:18px 22px;margin-bottom:24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-header h1{font-family:'Press Start 2P',monospace;font-size:16px;margin-bottom:5px;line-height:1.5;font-weight:700}
+  #print-doc .p-header p{font-size:11px;opacity:.85}
+  #print-doc .p-sec{margin-bottom:20px;page-break-inside:avoid}
+  #print-doc .p-hdr{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  #print-doc .p-num{font-family:'Press Start 2P',monospace;font-size:10px;padding:5px 8px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-ttl{font-family:'Press Start 2P',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+  #print-doc .p-box{background:#f7f7f7;border-left:3px solid #ddd;padding:9px 13px;font-size:12px;line-height:1.7;white-space:pre-wrap;word-break:break-word;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-mini{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;text-transform:uppercase;margin:9px 0 4px;letter-spacing:1px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+  #print-doc .p-two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  #print-doc .p-step{background:#f7f7f7;border-left:3px solid #00C2C7;padding:7px 11px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-step-lbl{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;display:block;margin-bottom:3px;font-weight:700}
+  #print-doc .p-suc{background:#f7f7f7;border-left:3px solid #FFD600;padding:9px 11px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-suc-q{font-family:'Press Start 2P',monospace;font-size:6px;color:#b8990a;display:block;margin-bottom:5px;line-height:1.6;font-weight:700}
+  #print-doc .p-feat{display:flex;align-items:center;gap:8px;padding:6px 9px;border:1px solid #e0e0e0;margin-bottom:3px}
+  #print-doc .p-feat-txt{flex:1;font-size:11px}
+  #print-doc .p-feat-done .p-feat-txt{text-decoration:line-through;color:#999}
+  #print-doc .p-feat-badge{font-family:'Press Start 2P',monospace;font-size:6px;padding:2px 5px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-prog-wrap{height:4px;background:#e0e0e0;margin-top:8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-prog-fill{height:100%;background:#FF2D78;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-prog-lbl{font-family:'Press Start 2P',monospace;font-size:7px;color:#999;margin-top:3px;display:flex;justify-content:space-between;font-weight:700}
+  #print-doc .p-divider{height:3px;background:repeating-linear-gradient(90deg,#FF2D78 0,#FF2D78 6px,transparent 6px,transparent 10px);margin:16px 0;opacity:.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p-footer{font-size:10px;color:#bbb;margin-top:24px;padding-top:10px;border-top:1px solid #eee}
+  @page{margin:1.5cm}
+}
+
+@media(max-width:640px){
+  .class-row,.three-col,.success-prompts{grid-template-columns:1fr}
+  .pri-opt{font-size:7px;padding:8px 10px}
+  .doc-title{font-size:16px}
+  .sec-ttl{font-size:10px}
+  .sec-num{font-size:10px}
+}
+</style>
+</head>
+<body>
+<div id="prd">
+  <div class="eyebrow">MYP Design · G10</div>
+  <div class="doc-title">Vibe Coding PRD</div>
+  <div class="doc-sub">Product Requirements Doc · <span id="datestamp"></span></div>
+
+  <div class="class-row" style="margin-top:20px">
+    <div class="meta-box"><label class="meta-label" for="meta-name">Your name</label><input class="meta-input" id="meta-name" type="text" placeholder="First and last name"></div>
+    <div class="meta-box"><label class="meta-label" for="meta-app">App / website name</label><input class="meta-input" id="meta-app" type="text" placeholder="e.g. TrailTracker, StudyBuddy"></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-num n-pink">01</span><span class="sec-ttl">Overview</span></div>
+    <p class="sec-desc">What are you building and why? A clear one-paragraph summary. This could be something useful, entertaining, creative, productive — whatever your idea is, explain it here.</p>
+    <div class="tbox"><textarea id="overview" rows="4" placeholder="e.g. A Magic 8 Ball app with a LEGO theme, designed to give silly, random answers to questions. Purely for fun and aimed at younger students."></textarea></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-num n-yellow">02</span><span class="sec-ttl">Vibe &amp; aesthetic</span></div>
+    <p class="sec-desc">Describe the look and feel you're going for. Think about colours, mood, and style. Be specific — 'nice' isn't enough!</p>
+    <div class="tbox" style="margin-bottom:10px"><textarea id="vibe" rows="3" placeholder="e.g. Bright and playful, like a toy store. Primary colours, chunky shapes, bold fonts. Fun and a bit silly — not serious at all."></textarea></div>
+    <div class="tbox"><input type="text" id="vibe-kw" class="meta-input" style="border-bottom:none;font-size:12px" placeholder="Keywords: e.g. bold, retro, minimal, playful, calm, dark, neon"></div>
+  </div>
+
+  <div class="pixel-div"></div>
+
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-num n-pink">03</span><span class="sec-ttl">Target users</span></div>
+    <p class="sec-desc">Who is this for? Think about age, context, and what they need or want from your app.</p>
+    <div class="three-col">
+      <div class="tbox"><textarea id="user-pri" rows="6" placeholder="e.g. Students aged 10–12 who want a quick, fun distraction between classes. They're used to touchscreens and expect things to be instantly obvious."></textarea><div class="hint">Primary user</div></div>
+      <div class="tbox"><textarea id="user-sec" rows="6" placeholder="e.g. A teacher who might display it on the classroom screen. They need it to be school-appropriate and easy to navigate without instructions."></textarea><div class="hint">Secondary user</div></div>
+      <div class="tbox"><textarea id="user-anti" rows="6" placeholder="e.g. Not for users who want serious or accurate answers — this is purely for entertainment and shouldn't be used for real decision-making."></textarea><div class="hint">Not for...</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-num n-teal">04</span><span class="sec-ttl">User journey</span></div>
+    <p class="sec-desc">Walk through what a user actually does — step by step — from opening your app to completing their goal.</p>
+    <div id="journey-grid" class="journey-grid"></div>
+    <button class="btn btn-t" id="btn-add-step" style="margin-top:10px">+ Add step</button>
+  </div>
+
+  <div class="pixel-div"></div>
+
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-num n-yellow">05</span><span class="sec-ttl">Success indicators</span></div>
+    <p class="sec-desc">Before you build: what will you observe that tells you your app is working? Think about what users will actually do and say — not just your own opinion of it.</p>
+    <div class="success-prompts">
+      <div class="prompt-card"><span class="prompt-q">What will users be able to do without help?</span><textarea id="suc-1" rows="4" placeholder="e.g. A first-time user can complete the main task in under 2 minutes without asking me for help."></textarea></div>
+      <div class="prompt-card"><span class="prompt-q">What will users say or do after using it?</span><textarea id="suc-2" rows="4" placeholder="e.g. Testers say they would use it again. At least 2 out of 3 say they'd recommend it."></textarea></div>
+      <div class="prompt-card"><span class="prompt-q">What will clearly be different for the user?</span><textarea id="suc-3" rows="4" placeholder="e.g. Users can now do X without needing a separate tool. The friction from my client interview is gone."></textarea></div>
+      <div class="prompt-card"><span class="prompt-q">How will you know if it has NOT worked?</span><textarea id="suc-4" rows="4" placeholder="e.g. If users skip the main feature or ask 'what am I supposed to do?', that's a sign the design has failed."></textarea></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr"><span class="sec-num n-teal">06</span><span class="sec-ttl">Feature scope</span></div>
+    <p class="sec-desc">List every feature you are planning. Describe it first, then choose its priority.</p>
+    <div class="filter-row">
+      <span class="filter-lbl">Show:</span>
+      <button class="pill pill-p act" data-f="all">All</button>
+      <button class="pill pill-p" data-f="must">Must have</button>
+      <button class="pill pill-y" data-f="should">Should have</button>
+      <button class="pill pill-g" data-f="wont">Won't have</button>
+    </div>
+    <div id="feature-list"></div>
+    <div class="feat-add-area">
+      <span class="step-label">Step 1 — describe the feature</span>
+      <div class="feat-input-row"><input id="feat-input" type="text" placeholder="e.g. Shake to get a new answer"></div>
+      <span class="step-label" id="step2-label" style="opacity:.4">Step 2 — choose its priority</span>
+      <div class="pri-picker" id="pri-picker">
+        <div class="pri-opt" data-p="must">Must have</div>
+        <div class="pri-opt" data-p="should">Should have</div>
+        <div class="pri-opt" data-p="wont">Won't have</div>
+      </div>
+      <button class="add-feat-btn" id="btn-add-feat">+ Add feature</button>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-lbl"><span id="prog-done">0 done</span><span id="prog-pct">0%</span></div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn btn-p" id="btn-save">Save progress</button>
+    <button class="btn btn-t" id="btn-clear">Clear all</button>
+  </div>
+
+  <div class="print-banner">
+    <div>
+      <p>Done? Save your PRD as a PDF</p>
+      <span>Click the button — then choose "Save as PDF" in the print dialog</span>
+    </div>
+    <button class="btn-print" id="btn-print">Print / Save PDF</button>
+  </div>
+
+  <div id="toast"></div>
+</div>
+
+<div id="print-doc"></div>
+
+<script>
+document.getElementById('datestamp').textContent = new Date().toLocaleDateString('en-US', {month:'long', year:'numeric'});
+
+let features = [], nextFid = 1, activeFilter = 'all';
+let journeySteps = [], nextJid = 1;
+let selectedPri = null;
+const SAVE_KEY = 'vibe_prd_g10';
+const FIELDS = ['meta-name','meta-app','overview','vibe','vibe-kw','user-pri','user-sec','user-anti','suc-1','suc-2','suc-3','suc-4'];
+
+const featInp = document.getElementById('feat-input');
+const addBtn = document.getElementById('btn-add-feat');
+const step2Lbl = document.getElementById('step2-label');
+
+function updateFeatState() {
+  const hasText = featInp.value.trim().length > 0;
+  document.querySelectorAll('.pri-opt').forEach(o => {
+    if (hasText) o.classList.add('unlocked');
+    else o.classList.remove('unlocked', 'active');
+  });
+  if (!hasText) { selectedPri = null; step2Lbl.style.opacity = '.4'; }
+  else step2Lbl.style.opacity = '1';
+  addBtn.classList.toggle('ready', hasText && selectedPri !== null);
+}
+featInp.addEventListener('input', updateFeatState);
+
+document.querySelectorAll('.pri-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    if (!featInp.value.trim()) { toast('Describe the feature first!'); return; }
+    selectedPri = opt.dataset.p;
+    document.querySelectorAll('.pri-opt').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    updateFeatState();
+  });
+});
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._to); t._to = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function renderFeatures() {
+  const list = document.getElementById('feature-list');
+  list.innerHTML = '';
+  const vis = activeFilter === 'all' ? features : features.filter(f => f.p === activeFilter);
+  const pm = {
+    must: {bg:'#FF2D78', col:'#fff', lbl:'MUST HAVE'},
+    should: {bg:'#FFD600', col:'#000', lbl:'SHOULD HAVE'},
+    wont: {bg:'#888', col:'#fff', lbl:"WON'T HAVE"}
+  };
+  vis.forEach(f => {
+    const p = pm[f.p];
+    const d = document.createElement('div');
+    d.className = 'check-item' + (f.done ? ' done' : '');
+    d.innerHTML = '<div class="chk-box"><span class="chk-mark">&#10003;</span></div>'
+      + '<span class="chk-lbl">' + f.text + '</span>'
+      + '<span class="pri-badge" style="background:' + p.bg + ';color:' + p.col + '">' + p.lbl + '</span>'
+      + '<button class="del-btn">&#10005;</button>';
+    d.addEventListener('click', e => {
+      if (e.target.classList.contains('del-btn')) { features = features.filter(x => x.id !== f.id); }
+      else { f.done = !f.done; }
+      renderFeatures();
+    });
+    list.appendChild(d);
+  });
+  const total = features.length, done = features.filter(f => f.done).length;
+  const pct = total === 0 ? 0 : Math.round(done / total * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-done').textContent = done + ' done';
+  document.getElementById('prog-pct').textContent = pct + '%';
+}
+
+document.querySelectorAll('[data-f]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.f;
+    document.querySelectorAll('[data-f]').forEach(b => b.classList.remove('act'));
+    btn.classList.add('act');
+    renderFeatures();
+  });
+});
+
+addBtn.addEventListener('click', () => {
+  const text = featInp.value.trim();
+  if (!text) { toast('Describe the feature first!'); return; }
+  if (!selectedPri) { toast('Choose a priority first!'); return; }
+  features.push({id: nextFid++, text, p: selectedPri, done: false});
+  featInp.value = ''; selectedPri = null;
+  document.querySelectorAll('.pri-opt').forEach(o => o.classList.remove('active', 'unlocked'));
+  step2Lbl.style.opacity = '.4'; addBtn.classList.remove('ready');
+  activeFilter = 'all';
+  document.querySelectorAll('[data-f]').forEach(b => { b.classList.remove('act'); if (b.dataset.f === 'all') b.classList.add('act'); });
+  renderFeatures(); toast('Feature added!'); featInp.focus();
+});
+
+featInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addBtn.click(); } });
+
+function renderJourney() {
+  const grid = document.getElementById('journey-grid');
+  grid.innerHTML = '';
+  journeySteps.forEach((step, idx) => {
+    const box = document.createElement('div');
+    box.className = 'tbox'; box.style.position = 'relative';
+    const lbl = document.createElement('label');
+    lbl.className = 'meta-label'; lbl.style.cssText = 'display:block;margin-bottom:7px;font-weight:700';
+    lbl.textContent = 'Step ' + (idx + 1);
+    const ta = document.createElement('textarea');
+    ta.rows = 3; ta.placeholder = 'What does the user do here?'; ta.value = step.desc;
+    ta.style.cssText = 'width:100%;background:transparent;border:none;color:#111;font-family:Space Mono,monospace;font-size:12px;line-height:1.7;resize:none;outline:none;display:block';
+    ta.addEventListener('input', () => { step.desc = ta.value; });
+    const del = document.createElement('button');
+    del.className = 'del-btn'; del.innerHTML = '&#10005;';
+    del.style.cssText = 'position:absolute;top:8px;right:8px';
+    del.addEventListener('click', () => { journeySteps = journeySteps.filter(s => s.id !== step.id); renderJourney(); });
+    box.appendChild(lbl); box.appendChild(ta); box.appendChild(del);
+    grid.appendChild(box);
+  });
+}
+
+document.getElementById('btn-add-step').addEventListener('click', () => {
+  journeySteps.push({id: nextJid++, desc: ''});
+  renderJourney(); toast('Step added!');
+});
+
+document.getElementById('btn-save').addEventListener('click', () => {
+  const data = {};
+  FIELDS.forEach(id => { const el = document.getElementById(id); if (el) data[id] = el.value; });
+  data._features = JSON.stringify(features);
+  data._journey = JSON.stringify(journeySteps);
+  data._nextFid = nextFid; data._nextJid = nextJid;
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); toast('Saved!'); }
+  catch(e) { toast('Save failed - try again'); }
+});
+
+document.getElementById('btn-clear').addEventListener('click', () => {
+  if (!confirm('Clear everything and start over?')) return;
+  FIELDS.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  features = []; journeySteps = []; nextFid = 1; nextJid = 1; selectedPri = null;
+  featInp.value = '';
+  document.querySelectorAll('.pri-opt').forEach(o => o.classList.remove('active', 'unlocked'));
+  step2Lbl.style.opacity = '.4'; addBtn.classList.remove('ready');
+  renderFeatures(); renderJourney();
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+  toast('Cleared!');
+});
+
+function buildPrintDoc() {
+  const name = document.getElementById('meta-name').value || 'Student';
+  const appName = document.getElementById('meta-app').value || 'My App';
+  const g = id => document.getElementById(id).value || '(not filled in)';
+  const pm = {
+    must: {bg:'#FF2D78', col:'#fff', lbl:'MUST HAVE'},
+    should: {bg:'#FFD600', col:'#000', lbl:'SHOULD HAVE'},
+    wont: {bg:'#888', col:'#fff', lbl:"WON'T HAVE"}
+  };
+  const journeyHTML = journeySteps.length === 0
+    ? '<p style="color:#aaa;font-style:italic;font-size:12px">(no steps added)</p>'
+    : journeySteps.map((s, i) => '<div class="p-step"><span class="p-step-lbl">Step ' + (i+1) + '</span><p style="font-size:12px;line-height:1.6">' + (s.desc || '(empty)') + '</p></div>').join('');
+  const featHTML = features.length === 0
+    ? '<p style="color:#aaa;font-style:italic;font-size:12px">(no features added)</p>'
+    : features.map(f => {
+        const p = pm[f.p];
+        return '<div class="p-feat' + (f.done ? ' p-feat-done' : '') + '">'
+          + '<span style="width:13px;height:13px;border:1.5px solid #ccc;display:inline-flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0">' + (f.done ? '&#10003;' : '') + '</span>'
+          + '<span class="p-feat-txt">' + f.text + '</span>'
+          + '<span class="p-feat-badge" style="background:' + p.bg + ';color:' + p.col + '">' + p.lbl + '</span>'
+          + '</div>';
+      }).join('');
+  const done = features.filter(f => f.done).length;
+  const pct = features.length === 0 ? 0 : Math.round(done / features.length * 100);
+
+  document.getElementById('print-doc').innerHTML =
+    '<div class="p-header"><h1>' + appName + '</h1><p>' + name + ' &nbsp;|&nbsp; MYP Design G10 &nbsp;|&nbsp; ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) + '</p></div>'
+    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FF2D78;color:#fff">01</span><span class="p-ttl">Overview</span></div><div class="p-box">' + g('overview') + '</div></div>'
+    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FFD600;color:#000">02</span><span class="p-ttl">Vibe &amp; Aesthetic</span></div><div class="p-box">' + g('vibe') + '</div><p class="p-mini">Keywords</p><div class="p-box">' + g('vibe-kw') + '</div></div>'
+    + '<div class="p-divider"></div>'
+    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FF2D78;color:#fff">03</span><span class="p-ttl">Target Users</span></div><div class="p-three"><div><p class="p-mini">Primary user</p><div class="p-box">' + g('user-pri') + '</div></div><div><p class="p-mini">Secondary user</p><div class="p-box">' + g('user-sec') + '</div></div><div><p class="p-mini">Not designed for</p><div class="p-box">' + g('user-anti') + '</div></div></div></div>'
+    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#00C2C7;color:#000">04</span><span class="p-ttl">User Journey</span></div>' + journeyHTML + '</div>'
+    + '<div class="p-divider"></div>'
+    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FFD600;color:#000">05</span><span class="p-ttl">Success Indicators</span></div><div class="p-two"><div class="p-suc"><span class="p-suc-q">What will users be able to do without help?</span><p style="font-size:12px;line-height:1.6">' + g('suc-1') + '</p></div><div class="p-suc"><span class="p-suc-q">What will users say or do after using it?</span><p style="font-size:12px;line-height:1.6">' + g('suc-2') + '</p></div><div class="p-suc"><span class="p-suc-q">What will clearly be different for the user?</span><p style="font-size:12px;line-height:1.6">' + g('suc-3') + '</p></div><div class="p-suc"><span class="p-suc-q">How will you know if it has NOT worked?</span><p style="font-size:12px;line-height:1.6">' + g('suc-4') + '</p></div></div></div>'
+    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#00C2C7;color:#000">06</span><span class="p-ttl">Feature Scope</span></div>' + featHTML
+    + '<div class="p-prog-wrap"><div class="p-prog-fill" style="width:' + pct + '%"></div></div>'
+    + '<div class="p-prog-lbl"><span>' + done + ' done</span><span>' + pct + '%</span></div></div>'
+    + '<div class="p-footer">MYP Design G10 &nbsp;|&nbsp; Vibe Coding Unit &nbsp;|&nbsp; ' + new Date().toLocaleString() + '</div>';
+}
+
+document.getElementById('btn-print').addEventListener('click', () => {
+  buildPrintDoc();
+  window.print();
+});
+
+try {
+  const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+  if (saved) {
+    FIELDS.forEach(id => { const el = document.getElementById(id); if (el && saved[id]) el.value = saved[id]; });
+    if (saved._features) { features = JSON.parse(saved._features); nextFid = saved._nextFid || features.length + 1; }
+    if (saved._journey) { journeySteps = JSON.parse(saved._journey); nextJid = saved._nextJid || journeySteps.length + 1; }
+  }
+} catch(e) {}
+
+renderFeatures();
+renderJourney();
+</script>
+</body>
+</html>
