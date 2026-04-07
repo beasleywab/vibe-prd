@@ -83,6 +83,17 @@ body{font-family:'Space Mono',monospace;color:#111;background:#f5f4f0;min-height
 .btn-p:hover{background:#FF2D78;color:#fff}
 .btn-t{border-color:#00C2C7;color:#009fa4}
 .btn-t:hover{background:#00C2C7;color:#000}
+.colour-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.colour-card{background:#fff;border:1.5px solid #ddd;padding:14px 16px}
+.colour-name-inp{font-family:'Press Start 2P',monospace;font-size:7px;color:#00C2C7;background:transparent;border:none;border-bottom:1px dashed #bbb;outline:none;width:100%;text-transform:uppercase;letter-spacing:1px;font-weight:700;padding:2px 0;margin-bottom:10px;display:block}
+.colour-name-inp::placeholder{color:#ccc}
+.colour-row{display:flex;align-items:center;gap:12px}
+.colour-row input[type="color"]{width:64px;height:48px;border:1.5px solid #ddd;cursor:pointer;padding:2px;background:#fff;flex-shrink:0}
+.colour-hex-lbl{font-family:'Space Mono',monospace;font-size:12px;color:#555;flex:1}
+.colour-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:13px;line-height:1;flex-shrink:0}
+.colour-del:hover{color:#FF2D78}
+.btn-add-colour{font-family:'Press Start 2P',monospace;font-size:7px;padding:8px 13px;cursor:pointer;border:1.5px solid #00C2C7;background:transparent;color:#009fa4;display:inline-flex;align-items:center;gap:6px;line-height:1;transition:all .12s;font-weight:700}
+.btn-add-colour:hover{background:#00C2C7;color:#000}
 .print-banner{background:#FF2D78;padding:16px 20px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .print-banner p{font-family:'Press Start 2P',monospace;font-size:8px;color:#fff;line-height:1.6;font-weight:700}
 .print-banner span{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.75);display:block;margin-top:5px}
@@ -96,48 +107,44 @@ body{font-family:'Space Mono',monospace;color:#111;background:#f5f4f0;min-height
 @media print {
   body{background:#fff}
   #prd{display:none!important}
-  #print-doc{
-    display:block!important;
-    font-family:'Space Mono',monospace;
-    color:#111;
-    background:#fff;
-    font-size:12px;
-    max-width:100%;
-    padding:0;
-  }
-  #print-doc .p-header{background:#FF2D78;color:#fff;padding:18px 22px;margin-bottom:24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-header h1{font-family:'Press Start 2P',monospace;font-size:16px;margin-bottom:5px;line-height:1.5;font-weight:700}
-  #print-doc .p-header p{font-size:11px;opacity:.85}
-  #print-doc .p-sec{margin-bottom:20px;page-break-inside:avoid}
-  #print-doc .p-hdr{display:flex;align-items:center;gap:9px;margin-bottom:8px}
-  #print-doc .p-num{font-family:'Press Start 2P',monospace;font-size:10px;padding:5px 8px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-ttl{font-family:'Press Start 2P',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
-  #print-doc .p-box{background:#f7f7f7;border-left:3px solid #ddd;padding:9px 13px;font-size:12px;line-height:1.7;white-space:pre-wrap;word-break:break-word;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-mini{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;text-transform:uppercase;margin:9px 0 4px;letter-spacing:1px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
-  #print-doc .p-two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-  #print-doc .p-step{background:#f7f7f7;border-left:3px solid #00C2C7;padding:7px 11px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-step-lbl{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;display:block;margin-bottom:3px;font-weight:700}
-  #print-doc .p-suc{background:#f7f7f7;border-left:3px solid #FFD600;padding:9px 11px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-suc-q{font-family:'Press Start 2P',monospace;font-size:6px;color:#b8990a;display:block;margin-bottom:5px;line-height:1.6;font-weight:700}
-  #print-doc .p-feat{display:flex;align-items:center;gap:8px;padding:6px 9px;border:1px solid #e0e0e0;margin-bottom:3px}
-  #print-doc .p-feat-txt{flex:1;font-size:11px}
-  #print-doc .p-feat-done .p-feat-txt{text-decoration:line-through;color:#999}
-  #print-doc .p-feat-badge{font-family:'Press Start 2P',monospace;font-size:6px;padding:2px 5px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-prog-wrap{height:4px;background:#e0e0e0;margin-top:8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-prog-fill{height:100%;background:#FF2D78;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-prog-lbl{font-family:'Press Start 2P',monospace;font-size:7px;color:#999;margin-top:3px;display:flex;justify-content:space-between;font-weight:700}
-  #print-doc .p-divider{height:3px;background:repeating-linear-gradient(90deg,#FF2D78 0,#FF2D78 6px,transparent 6px,transparent 10px);margin:16px 0;opacity:.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #print-doc .p-footer{font-size:10px;color:#bbb;margin-top:24px;padding-top:10px;border-top:1px solid #eee}
+  #print-doc{display:block!important;font-family:'Space Mono',monospace;color:#111;background:#fff;font-size:12px;padding:0}
+  #print-doc .ph{background:#FF2D78;color:#fff;padding:18px 22px;margin-bottom:22px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .ph h1{font-family:'Press Start 2P',monospace;font-size:16px;margin-bottom:5px;line-height:1.5;font-weight:700}
+  #print-doc .ph p{font-size:11px;opacity:.85}
+  #print-doc .ps{margin-bottom:18px;page-break-inside:avoid}
+  #print-doc .psh{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+  #print-doc .pn{font-family:'Press Start 2P',monospace;font-size:10px;padding:5px 8px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .pt{font-family:'Press Start 2P',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+  #print-doc .pb{background:#f7f7f7;border-left:3px solid #ddd;padding:9px 13px;font-size:12px;line-height:1.7;white-space:pre-wrap;word-break:break-word;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .pm{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;text-transform:uppercase;margin:8px 0 4px;letter-spacing:1px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .p3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  #print-doc .p2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  #print-doc .pstep{background:#f7f7f7;border-left:3px solid #00C2C7;padding:7px 11px;margin-bottom:5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .pstep-l{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;display:block;margin-bottom:3px;font-weight:700}
+  #print-doc .psuc{background:#f7f7f7;border-left:3px solid #FFD600;padding:9px 11px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .psuc-q{font-family:'Press Start 2P',monospace;font-size:6px;color:#b8990a;display:block;margin-bottom:5px;line-height:1.6;font-weight:700}
+  #print-doc .pf{display:flex;align-items:center;gap:8px;padding:6px 9px;border:1px solid #e0e0e0;margin-bottom:3px}
+  #print-doc .pf-txt{flex:1;font-size:11px}
+  #print-doc .pf-done .pf-txt{text-decoration:line-through;color:#999}
+  #print-doc .pf-badge{font-family:'Press Start 2P',monospace;font-size:6px;padding:2px 5px;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .ppw{height:4px;background:#e0e0e0;margin-top:8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .ppf{height:100%;background:#FF2D78;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .ppl{font-family:'Press Start 2P',monospace;font-size:7px;color:#999;margin-top:3px;display:flex;justify-content:space-between;font-weight:700}
+  #print-doc .pdiv{height:3px;background:repeating-linear-gradient(90deg,#FF2D78 0,#FF2D78 6px,transparent 6px,transparent 10px);margin:14px 0;opacity:.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .pcg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+  #print-doc .pcc{background:#f7f7f7;border:1.5px solid #ddd;padding:10px 12px;display:flex;align-items:center;gap:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .pcs{width:44px;height:36px;border:1.5px solid #ddd;flex-shrink:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-doc .pci-name{font-family:'Press Start 2P',monospace;font-size:6px;color:#00C2C7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px}
+  #print-doc .pci-hex{font-family:'Space Mono',monospace;font-size:11px;color:#333}
+  #print-doc .pfooter{font-size:10px;color:#bbb;margin-top:22px;padding-top:10px;border-top:1px solid #eee}
   @page{margin:1.5cm}
 }
 
 @media(max-width:640px){
-  .class-row,.three-col,.success-prompts{grid-template-columns:1fr}
+  .class-row,.three-col,.success-prompts,.colour-grid{grid-template-columns:1fr}
   .pri-opt{font-size:7px;padding:8px 10px}
   .doc-title{font-size:16px}
-  .sec-ttl{font-size:10px}
-  .sec-num{font-size:10px}
+  .sec-ttl,.sec-num{font-size:10px}
 }
 </style>
 </head>
@@ -162,7 +169,10 @@ body{font-family:'Space Mono',monospace;color:#111;background:#f5f4f0;min-height
     <div class="sec-hdr"><span class="sec-num n-yellow">02</span><span class="sec-ttl">Vibe &amp; aesthetic</span></div>
     <p class="sec-desc">Describe the look and feel you're going for. Think about colours, mood, and style. Be specific — 'nice' isn't enough!</p>
     <div class="tbox" style="margin-bottom:10px"><textarea id="vibe" rows="3" placeholder="e.g. Bright and playful, like a toy store. Primary colours, chunky shapes, bold fonts. Fun and a bit silly — not serious at all."></textarea></div>
-    <div class="tbox"><input type="text" id="vibe-kw" class="meta-input" style="border-bottom:none;font-size:12px" placeholder="Keywords: e.g. bold, retro, minimal, playful, calm, dark, neon"></div>
+    <div class="tbox" style="margin-bottom:10px"><input type="text" id="vibe-kw" class="meta-input" style="border-bottom:none;font-size:12px" placeholder="Keywords: e.g. bold, retro, minimal, playful, calm, dark, neon"></div>
+    <p class="meta-label" style="margin-bottom:10px">Colour palette</p>
+    <div class="colour-grid" id="colour-grid"></div>
+    <button class="btn-add-colour" id="btn-add-colour">+ Add colour</button>
   </div>
 
   <div class="pixel-div"></div>
@@ -235,7 +245,6 @@ body{font-family:'Space Mono',monospace;color:#111;background:#f5f4f0;min-height
     </div>
     <button class="btn-print" id="btn-print">Print / Save PDF</button>
   </div>
-
   <div id="toast"></div>
 </div>
 
@@ -244,16 +253,86 @@ body{font-family:'Space Mono',monospace;color:#111;background:#f5f4f0;min-height
 <script>
 document.getElementById('datestamp').textContent = new Date().toLocaleDateString('en-US', {month:'long', year:'numeric'});
 
+// --- State ---
 let features = [], nextFid = 1, activeFilter = 'all';
 let journeySteps = [], nextJid = 1;
 let selectedPri = null;
+let colours = [
+  {id:1, name:'Primary',    hex:'#FF2D78'},
+  {id:2, name:'Secondary',  hex:'#00C2C7'},
+  {id:3, name:'Accent',     hex:'#FFD600'},
+  {id:4, name:'Background', hex:'#FFFFFF'}
+];
+let nextCid = 5;
+
 const SAVE_KEY = 'vibe_prd_g10';
 const FIELDS = ['meta-name','meta-app','overview','vibe','vibe-kw','user-pri','user-sec','user-anti','suc-1','suc-2','suc-3','suc-4'];
-
 const featInp = document.getElementById('feat-input');
-const addBtn = document.getElementById('btn-add-feat');
+const addBtn  = document.getElementById('btn-add-feat');
 const step2Lbl = document.getElementById('step2-label');
 
+// --- Toast ---
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._to); t._to = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// --- Colours ---
+function renderColours() {
+  const grid = document.getElementById('colour-grid');
+  grid.innerHTML = '';
+  colours.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'colour-card';
+
+    const nameInp = document.createElement('input');
+    nameInp.type = 'text';
+    nameInp.className = 'colour-name-inp';
+    nameInp.value = c.name;
+    nameInp.placeholder = 'e.g. Primary';
+    nameInp.addEventListener('input', () => { c.name = nameInp.value; });
+
+    const row = document.createElement('div');
+    row.className = 'colour-row';
+
+    const picker = document.createElement('input');
+    picker.type = 'color';
+    picker.value = c.hex;
+
+    const hexLbl = document.createElement('span');
+    hexLbl.className = 'colour-hex-lbl';
+    hexLbl.textContent = c.hex.toUpperCase();
+
+    picker.addEventListener('input', () => {
+      c.hex = picker.value.toUpperCase();
+      hexLbl.textContent = c.hex;
+    });
+
+    const del = document.createElement('button');
+    del.className = 'colour-del';
+    del.title = 'Remove';
+    del.innerHTML = '&#10005;';
+    del.addEventListener('click', () => {
+      colours = colours.filter(x => x.id !== c.id);
+      renderColours();
+    });
+
+    row.appendChild(picker);
+    row.appendChild(hexLbl);
+    row.appendChild(del);
+    card.appendChild(nameInp);
+    card.appendChild(row);
+    grid.appendChild(card);
+  });
+}
+
+document.getElementById('btn-add-colour').addEventListener('click', () => {
+  colours.push({id: nextCid++, name: 'Colour ' + (colours.length + 1), hex: '#888888'});
+  renderColours();
+});
+
+// --- Features ---
 function updateFeatState() {
   const hasText = featInp.value.trim().length > 0;
   document.querySelectorAll('.pri-opt').forEach(o => {
@@ -276,20 +355,14 @@ document.querySelectorAll('.pri-opt').forEach(opt => {
   });
 });
 
-function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(t._to); t._to = setTimeout(() => t.classList.remove('show'), 2200);
-}
-
 function renderFeatures() {
   const list = document.getElementById('feature-list');
   list.innerHTML = '';
   const vis = activeFilter === 'all' ? features : features.filter(f => f.p === activeFilter);
   const pm = {
-    must: {bg:'#FF2D78', col:'#fff', lbl:'MUST HAVE'},
+    must:   {bg:'#FF2D78', col:'#fff', lbl:'MUST HAVE'},
     should: {bg:'#FFD600', col:'#000', lbl:'SHOULD HAVE'},
-    wont: {bg:'#888', col:'#fff', lbl:"WON'T HAVE"}
+    wont:   {bg:'#888',    col:'#fff', lbl:"WON'T HAVE"}
   };
   vis.forEach(f => {
     const p = pm[f.p];
@@ -300,8 +373,8 @@ function renderFeatures() {
       + '<span class="pri-badge" style="background:' + p.bg + ';color:' + p.col + '">' + p.lbl + '</span>'
       + '<button class="del-btn">&#10005;</button>';
     d.addEventListener('click', e => {
-      if (e.target.classList.contains('del-btn')) { features = features.filter(x => x.id !== f.id); }
-      else { f.done = !f.done; }
+      if (e.target.classList.contains('del-btn')) features = features.filter(x => x.id !== f.id);
+      else f.done = !f.done;
       renderFeatures();
     });
     list.appendChild(d);
@@ -334,9 +407,9 @@ addBtn.addEventListener('click', () => {
   document.querySelectorAll('[data-f]').forEach(b => { b.classList.remove('act'); if (b.dataset.f === 'all') b.classList.add('act'); });
   renderFeatures(); toast('Feature added!'); featInp.focus();
 });
-
 featInp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addBtn.click(); } });
 
+// --- Journey ---
 function renderJourney() {
   const grid = document.getElementById('journey-grid');
   grid.innerHTML = '';
@@ -358,18 +431,18 @@ function renderJourney() {
     grid.appendChild(box);
   });
 }
-
 document.getElementById('btn-add-step').addEventListener('click', () => {
-  journeySteps.push({id: nextJid++, desc: ''});
-  renderJourney(); toast('Step added!');
+  journeySteps.push({id: nextJid++, desc: ''}); renderJourney(); toast('Step added!');
 });
 
+// --- Save / Clear ---
 document.getElementById('btn-save').addEventListener('click', () => {
   const data = {};
   FIELDS.forEach(id => { const el = document.getElementById(id); if (el) data[id] = el.value; });
   data._features = JSON.stringify(features);
-  data._journey = JSON.stringify(journeySteps);
-  data._nextFid = nextFid; data._nextJid = nextJid;
+  data._journey  = JSON.stringify(journeySteps);
+  data._colours  = JSON.stringify(colours);
+  data._nextFid = nextFid; data._nextJid = nextJid; data._nextCid = nextCid;
   try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); toast('Saved!'); }
   catch(e) { toast('Save failed - try again'); }
 });
@@ -378,52 +451,84 @@ document.getElementById('btn-clear').addEventListener('click', () => {
   if (!confirm('Clear everything and start over?')) return;
   FIELDS.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   features = []; journeySteps = []; nextFid = 1; nextJid = 1; selectedPri = null;
+  colours = [{id:1,name:'Primary',hex:'#FF2D78'},{id:2,name:'Secondary',hex:'#00C2C7'},{id:3,name:'Accent',hex:'#FFD600'},{id:4,name:'Background',hex:'#FFFFFF'}]; nextCid = 5;
   featInp.value = '';
   document.querySelectorAll('.pri-opt').forEach(o => o.classList.remove('active', 'unlocked'));
   step2Lbl.style.opacity = '.4'; addBtn.classList.remove('ready');
-  renderFeatures(); renderJourney();
+  renderFeatures(); renderJourney(); renderColours();
   try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
   toast('Cleared!');
 });
 
+// --- Print ---
 function buildPrintDoc() {
-  const name = document.getElementById('meta-name').value || 'Student';
-  const appName = document.getElementById('meta-app').value || 'My App';
+  const name    = document.getElementById('meta-name').value || 'Student';
+  const appName = document.getElementById('meta-app').value  || 'My App';
   const g = id => document.getElementById(id).value || '(not filled in)';
   const pm = {
-    must: {bg:'#FF2D78', col:'#fff', lbl:'MUST HAVE'},
+    must:   {bg:'#FF2D78', col:'#fff', lbl:'MUST HAVE'},
     should: {bg:'#FFD600', col:'#000', lbl:'SHOULD HAVE'},
-    wont: {bg:'#888', col:'#fff', lbl:"WON'T HAVE"}
+    wont:   {bg:'#888',    col:'#fff', lbl:"WON'T HAVE"}
   };
+
   const journeyHTML = journeySteps.length === 0
     ? '<p style="color:#aaa;font-style:italic;font-size:12px">(no steps added)</p>'
-    : journeySteps.map((s, i) => '<div class="p-step"><span class="p-step-lbl">Step ' + (i+1) + '</span><p style="font-size:12px;line-height:1.6">' + (s.desc || '(empty)') + '</p></div>').join('');
+    : journeySteps.map((s, i) =>
+        '<div class="pstep"><span class="pstep-l">Step ' + (i+1) + '</span>'
+        + '<p style="font-size:12px;line-height:1.6">' + (s.desc || '(empty)') + '</p></div>'
+      ).join('');
+
   const featHTML = features.length === 0
     ? '<p style="color:#aaa;font-style:italic;font-size:12px">(no features added)</p>'
     : features.map(f => {
         const p = pm[f.p];
-        return '<div class="p-feat' + (f.done ? ' p-feat-done' : '') + '">'
+        return '<div class="pf' + (f.done ? ' pf-done' : '') + '">'
           + '<span style="width:13px;height:13px;border:1.5px solid #ccc;display:inline-flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0">' + (f.done ? '&#10003;' : '') + '</span>'
-          + '<span class="p-feat-txt">' + f.text + '</span>'
-          + '<span class="p-feat-badge" style="background:' + p.bg + ';color:' + p.col + '">' + p.lbl + '</span>'
+          + '<span class="pf-txt">' + f.text + '</span>'
+          + '<span class="pf-badge" style="background:' + p.bg + ';color:' + p.col + '">' + p.lbl + '</span>'
           + '</div>';
       }).join('');
+
+  const colourHTML = colours.map(c =>
+    '<div class="pcc">'
+    + '<div class="pcs" style="background:' + c.hex + '"></div>'
+    + '<div><span class="pci-name">' + (c.name || 'Colour') + '</span>'
+    + '<span class="pci-hex">' + c.hex.toUpperCase() + '</span></div>'
+    + '</div>'
+  ).join('');
+
   const done = features.filter(f => f.done).length;
-  const pct = features.length === 0 ? 0 : Math.round(done / features.length * 100);
+  const pct  = features.length === 0 ? 0 : Math.round(done / features.length * 100);
+  const date = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
 
   document.getElementById('print-doc').innerHTML =
-    '<div class="p-header"><h1>' + appName + '</h1><p>' + name + ' &nbsp;|&nbsp; MYP Design G10 &nbsp;|&nbsp; ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) + '</p></div>'
-    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FF2D78;color:#fff">01</span><span class="p-ttl">Overview</span></div><div class="p-box">' + g('overview') + '</div></div>'
-    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FFD600;color:#000">02</span><span class="p-ttl">Vibe &amp; Aesthetic</span></div><div class="p-box">' + g('vibe') + '</div><p class="p-mini">Keywords</p><div class="p-box">' + g('vibe-kw') + '</div></div>'
-    + '<div class="p-divider"></div>'
-    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FF2D78;color:#fff">03</span><span class="p-ttl">Target Users</span></div><div class="p-three"><div><p class="p-mini">Primary user</p><div class="p-box">' + g('user-pri') + '</div></div><div><p class="p-mini">Secondary user</p><div class="p-box">' + g('user-sec') + '</div></div><div><p class="p-mini">Not designed for</p><div class="p-box">' + g('user-anti') + '</div></div></div></div>'
-    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#00C2C7;color:#000">04</span><span class="p-ttl">User Journey</span></div>' + journeyHTML + '</div>'
-    + '<div class="p-divider"></div>'
-    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#FFD600;color:#000">05</span><span class="p-ttl">Success Indicators</span></div><div class="p-two"><div class="p-suc"><span class="p-suc-q">What will users be able to do without help?</span><p style="font-size:12px;line-height:1.6">' + g('suc-1') + '</p></div><div class="p-suc"><span class="p-suc-q">What will users say or do after using it?</span><p style="font-size:12px;line-height:1.6">' + g('suc-2') + '</p></div><div class="p-suc"><span class="p-suc-q">What will clearly be different for the user?</span><p style="font-size:12px;line-height:1.6">' + g('suc-3') + '</p></div><div class="p-suc"><span class="p-suc-q">How will you know if it has NOT worked?</span><p style="font-size:12px;line-height:1.6">' + g('suc-4') + '</p></div></div></div>'
-    + '<div class="p-sec"><div class="p-hdr"><span class="p-num" style="background:#00C2C7;color:#000">06</span><span class="p-ttl">Feature Scope</span></div>' + featHTML
-    + '<div class="p-prog-wrap"><div class="p-prog-fill" style="width:' + pct + '%"></div></div>'
-    + '<div class="p-prog-lbl"><span>' + done + ' done</span><span>' + pct + '%</span></div></div>'
-    + '<div class="p-footer">MYP Design G10 &nbsp;|&nbsp; Vibe Coding Unit &nbsp;|&nbsp; ' + new Date().toLocaleString() + '</div>';
+    '<div class="ph"><h1>' + appName + '</h1><p>' + name + ' &nbsp;|&nbsp; MYP Design G10 &nbsp;|&nbsp; ' + date + '</p></div>'
+    + '<div class="ps"><div class="psh"><span class="pn" style="background:#FF2D78;color:#fff">01</span><span class="pt">Overview</span></div><div class="pb">' + g('overview') + '</div></div>'
+    + '<div class="ps"><div class="psh"><span class="pn" style="background:#FFD600;color:#000">02</span><span class="pt">Vibe &amp; Aesthetic</span></div>'
+    + '<div class="pb">' + g('vibe') + '</div>'
+    + '<p class="pm">Keywords</p><div class="pb">' + g('vibe-kw') + '</div>'
+    + '<p class="pm">Colour Palette</p><div class="pcg">' + colourHTML + '</div></div>'
+    + '<div class="pdiv"></div>'
+    + '<div class="ps"><div class="psh"><span class="pn" style="background:#FF2D78;color:#fff">03</span><span class="pt">Target Users</span></div>'
+    + '<div class="p3">'
+    + '<div><p class="pm">Primary user</p><div class="pb">' + g('user-pri') + '</div></div>'
+    + '<div><p class="pm">Secondary user</p><div class="pb">' + g('user-sec') + '</div></div>'
+    + '<div><p class="pm">Not designed for</p><div class="pb">' + g('user-anti') + '</div></div>'
+    + '</div></div>'
+    + '<div class="ps"><div class="psh"><span class="pn" style="background:#00C2C7;color:#000">04</span><span class="pt">User Journey</span></div>' + journeyHTML + '</div>'
+    + '<div class="pdiv"></div>'
+    + '<div class="ps"><div class="psh"><span class="pn" style="background:#FFD600;color:#000">05</span><span class="pt">Success Indicators</span></div>'
+    + '<div class="p2">'
+    + '<div class="psuc"><span class="psuc-q">What will users be able to do without help?</span><p style="font-size:12px;line-height:1.6">' + g('suc-1') + '</p></div>'
+    + '<div class="psuc"><span class="psuc-q">What will users say or do after using it?</span><p style="font-size:12px;line-height:1.6">' + g('suc-2') + '</p></div>'
+    + '<div class="psuc"><span class="psuc-q">What will clearly be different for the user?</span><p style="font-size:12px;line-height:1.6">' + g('suc-3') + '</p></div>'
+    + '<div class="psuc"><span class="psuc-q">How will you know if it has NOT worked?</span><p style="font-size:12px;line-height:1.6">' + g('suc-4') + '</p></div>'
+    + '</div></div>'
+    + '<div class="ps"><div class="psh"><span class="pn" style="background:#00C2C7;color:#000">06</span><span class="pt">Feature Scope</span></div>'
+    + featHTML
+    + '<div class="ppw"><div class="ppf" style="width:' + pct + '%"></div></div>'
+    + '<div class="ppl"><span>' + done + ' done</span><span>' + pct + '%</span></div></div>'
+    + '<div class="pfooter">MYP Design G10 &nbsp;|&nbsp; Vibe Coding Unit &nbsp;|&nbsp; ' + new Date().toLocaleString() + '</div>';
 }
 
 document.getElementById('btn-print').addEventListener('click', () => {
@@ -431,17 +536,20 @@ document.getElementById('btn-print').addEventListener('click', () => {
   window.print();
 });
 
+// --- Load saved ---
 try {
   const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
   if (saved) {
     FIELDS.forEach(id => { const el = document.getElementById(id); if (el && saved[id]) el.value = saved[id]; });
     if (saved._features) { features = JSON.parse(saved._features); nextFid = saved._nextFid || features.length + 1; }
-    if (saved._journey) { journeySteps = JSON.parse(saved._journey); nextJid = saved._nextJid || journeySteps.length + 1; }
+    if (saved._journey)  { journeySteps = JSON.parse(saved._journey); nextJid = saved._nextJid || journeySteps.length + 1; }
+    if (saved._colours)  { colours = JSON.parse(saved._colours); nextCid = saved._nextCid || colours.length + 1; }
   }
 } catch(e) {}
 
 renderFeatures();
 renderJourney();
+renderColours();
 </script>
 </body>
 </html>
